@@ -2,7 +2,7 @@
 import cv2
 
 ##Carrega a imagem
-imagem = cv2.imread("assets/carro.jpg")
+imagem = cv2.imread("assets/exemplos/carro.jpg")
 cv2.imshow("teste imagem", imagem)
 
 ##Altera a imagem para escala cinza pois é possível apenas encontrar padrões utilizando preto e branco
@@ -33,6 +33,10 @@ for c in contornos:
             (x, y, alt, larg) = cv2.boundingRect(c)
             ##Passa a posição dos quadrados perfeitos e os pinta
             cv2.rectangle(imagem, (x, y), (x + alt, y + larg), (0, 255, 0), 2)
+            #Encontra somente a parte pintada, considerando a posição + largura e altura
+            corte = imagem[y:y + larg, x:x + alt]
+
+            cv2.imwrite("assets/cortes/roi-img.jpg", corte)
 
 cv2.imshow("draw", imagem)
 
