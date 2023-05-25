@@ -1,0 +1,9 @@
+import os 
+
+local = r"C:\Users\parana\Desktop\Nova pasta\\"
+cont = 100
+
+for filename in os.listdir(local):
+    novonome = f"{cont}.jpg"
+    os.rename(os.path.join(local, filename), os.path.join(local, novonome))
+    cont += 1
